@@ -15,7 +15,7 @@ Self-hosted GitHub Actions runners for Flutter/Android builds, deployed via Port
 
 1. Go to **Images → Build image**
 2. Set the image name to `gh-runner-image:1.0.0`
-3. Switch to **Upload** and upload the contents of `github-runners/flutter-android/` (both `Dockerfile` and `entrypoint.sh` must be in the same upload)
+3. Switch to **Upload** and upload only the `Dockerfile` from `github-runners/flutter-android/` — `entrypoint.sh` is fetched from GitHub automatically during the build
 4. Click **Build the image** and wait for it to complete — this takes a few minutes as it downloads the Android SDK and Flutter
 
 ---
