@@ -1,0 +1,5 @@
+# Environment secrets
+.env
+
+# GitHub Actions runner job workspaces
+**/_work/

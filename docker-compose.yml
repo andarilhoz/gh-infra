@@ -1,0 +1,35 @@
+services:
+  runner-1:
+    build:
+      context: ./github-runners/flutter-android
+      args:
+        FLUTTER_VERSION: ${FLUTTER_VERSION:-3.41.1}
+    image: flutter-android-runner:${FLUTTER_VERSION:-3.41.1}
+    restart: unless-stopped
+    environment:
+      GITHUB_PAT: ${GITHUB_PAT}
+      GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
+      RUNNER_NAME: ${RUNNER_NAME:-flutter-runner}
+    volumes:
+      - pub_cache:/home/runner/.pub-cache
+      - runner_1_work:/opt/actions-runner/_work
+
+  runner-2:
+    build:
+      context: ./github-runners/flutter-android
+      args:
+        FLUTTER_VERSION: ${FLUTTER_VERSION:-3.41.1}
+    image: flutter-android-runner:${FLUTTER_VERSION:-3.41.1}
+    restart: unless-stopped
+    environment:
+      GITHUB_PAT: ${GITHUB_PAT}
+      GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
+      RUNNER_NAME: ${RUNNER_NAME:-flutter-runner}
+    volumes:
+      - pub_cache:/home/runner/.pub-cache
+      - runner_2_work:/opt/actions-runner/_work
+
+volumes:
+  pub_cache:
+  runner_1_work:
+  runner_2_work:
