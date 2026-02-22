@@ -66,8 +66,10 @@ RUN mkdir -p "${RUNNER_HOME}" \
 RUN useradd -m -s /bin/bash runner \
     && chown -R runner:runner "${RUNNER_HOME}" "${FLUTTER_HOME}" "${ANDROID_HOME}"
 
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN curl -sSL \
+        "https://raw.githubusercontent.com/andarilhoz/gh-infra/master/github-runners/flutter-android/entrypoint.sh" \
+        -o /entrypoint.sh \
+    && chmod +x /entrypoint.sh
 
 USER runner
 WORKDIR ${RUNNER_HOME}
