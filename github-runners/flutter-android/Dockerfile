@@ -64,6 +64,7 @@ RUN mkdir -p "${RUNNER_HOME}" \
 
 # ─── Layer 5: Non-root runner user ───────────────────────────────────────────
 RUN useradd -m -s /bin/bash runner \
+    && mkdir -p "${RUNNER_HOME}/_work" \
     && chown -R runner:runner "${RUNNER_HOME}" "${FLUTTER_HOME}" "${ANDROID_HOME}"
 
 ARG ENTRYPOINT_VERSION=1
