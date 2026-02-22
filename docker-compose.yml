@@ -1,10 +1,6 @@
 services:
   runner-1:
-    build:
-      context: ./github-runners/flutter-android
-      args:
-        FLUTTER_VERSION: ${FLUTTER_VERSION:-3.41.1}
-    image: flutter-android-runner:${FLUTTER_VERSION:-3.41.1}
+    image: gh-runner-image:1.0.0
     restart: unless-stopped
     environment:
       GITHUB_PAT: ${GITHUB_PAT}
@@ -15,11 +11,7 @@ services:
       - runner_1_work:/opt/actions-runner/_work
 
   runner-2:
-    build:
-      context: ./github-runners/flutter-android
-      args:
-        FLUTTER_VERSION: ${FLUTTER_VERSION:-3.41.1}
-    image: flutter-android-runner:${FLUTTER_VERSION:-3.41.1}
+    image: gh-runner-image:1.0.0
     restart: unless-stopped
     environment:
       GITHUB_PAT: ${GITHUB_PAT}
