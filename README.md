@@ -41,7 +41,7 @@ Self-hosted GitHub Actions runners for Flutter/Android builds, deployed via Port
 
 - Open your repository on GitHub → **Settings → Actions → Runners**
 - Both `flutter-runner-<hostname>` runners should appear as **Online**
-- They will accept jobs with the labels `self-hosted`, `flutter`, and `android`
+- They will accept jobs with the labels `self-hosted`, `linux`, `homelab`, `flutter`, and `android`
 
 ---
 
