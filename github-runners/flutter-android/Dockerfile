@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         xz-utils \
         jq \
         libglu1-mesa \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && ln -s /usr/lib/jvm/java-17-openjdk-amd64 /usr/lib/jvm/java-17-openjdk
 
 # ─── Layer 2: Android SDK ────────────────────────────────────────────────────
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
