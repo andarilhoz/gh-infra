@@ -66,6 +66,7 @@ RUN mkdir -p "${RUNNER_HOME}" \
 RUN useradd -m -s /bin/bash runner \
     && chown -R runner:runner "${RUNNER_HOME}" "${FLUTTER_HOME}" "${ANDROID_HOME}"
 
+ARG ENTRYPOINT_VERSION=1
 RUN curl -sSL \
         "https://raw.githubusercontent.com/andarilhoz/gh-infra/master/github-runners/flutter-android/entrypoint.sh" \
         -o /entrypoint.sh \
