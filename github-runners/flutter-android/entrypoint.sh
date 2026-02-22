@@ -29,7 +29,7 @@ echo "Configuring runner '${RUNNER_NAME}'..."
     --url "https://github.com/${GITHUB_REPOSITORY}" \
     --token "${REGISTRATION_TOKEN}" \
     --name "${RUNNER_NAME}" \
-    --labels "flutter,android,self-hosted" \
+    --labels "self-hosted,linux,homelab,flutter,android" \
     --work "_work" \
     --unattended \
     --replace
