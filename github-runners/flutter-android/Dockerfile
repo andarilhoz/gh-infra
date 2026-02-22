@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         xz-utils \
         jq \
         libglu1-mesa \
+        libsqlite3-dev \
+        libsqlite3-0 \
     && rm -rf /var/lib/apt/lists/* \
     && ln -s /usr/lib/jvm/java-17-openjdk-amd64 /usr/lib/jvm/java-17-openjdk
 
