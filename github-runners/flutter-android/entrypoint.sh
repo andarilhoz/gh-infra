@@ -23,6 +23,19 @@ if [[ -z "${REGISTRATION_TOKEN}" || "${REGISTRATION_TOKEN}" == "null" ]]; then
     exit 1
 fi
 
+# ─── Remove stale configuration if present ───────────────────────────────────
+if [[ -f "${RUNNER_DIR}/.runner" ]]; then
+    echo "Stale runner config detected, removing before reconfiguring..."
+    REMOVAL_TOKEN=$(curl -sSL \
+        -X POST \
+        -H "Accept: application/vnd.github+json" \
+        -H "Authorization: Bearer ${GITHUB_PAT}" \
+        -H "X-GitHub-Api-Version: 2022-11-28" \
+        "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runners/remove-token" \
+        | jq -r '.token')
+    "${RUNNER_DIR}/config.sh" remove --token "${REMOVAL_TOKEN}" || true
+fi
+
 # ─── Configure the runner ─────────────────────────────────────────────────────
 echo "Configuring runner '${RUNNER_NAME}'..."
 "${RUNNER_DIR}/config.sh" \
